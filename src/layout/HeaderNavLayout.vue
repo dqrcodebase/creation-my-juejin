@@ -1,5 +1,5 @@
 <template>
-  <div class="default-layout">
+  <div class='default-layout'>
     <main-header />
     <view-nav />
     <slot></slot>
@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import MainHeader from "components/MainHeader/index.vue";
-import viewNav from "components/ViewNav/index.vue";
+import MainHeader from 'components/MainHeader/index.vue';
+import viewNav from 'components/ViewNav/index.vue';
 
 export default {
   components: { MainHeader, viewNav },

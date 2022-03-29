@@ -1,0 +1,22 @@
+:root {
+  --default-font-color: #515767;
+  --main-color: #1e80ff;
+  --main-button-active-background: #eaf2ff;
+}
+
+.element-centre {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-item {
+  font-size: 1.167rem;
+  a {
+    color: var(--default-font-color);
+    &.active {
+      color: var(--main-color);
+    }
+  }
+}

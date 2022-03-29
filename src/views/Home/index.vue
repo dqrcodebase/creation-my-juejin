@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import HeaderNavLayout from "layout/HeaderNavLayout.vue";
+import HeaderNavLayout from 'layout/HeaderNavLayout.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     HeaderNavLayout,
   },
