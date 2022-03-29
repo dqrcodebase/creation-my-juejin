@@ -19,7 +19,6 @@ export default {
   methods: {
     inputFocusHandle(Boole) {
       this.isFocus = Boole
-      console.log('inputFocusHandle')
     }
   }
 };
@@ -60,5 +59,13 @@ export default {
     background: #f2f3f5;
     border-radius: 2px;
   }
+}
+@media screen and (min-width: 1431px) {
+  .history-input {
+     width: 216px;
+  }
+}
+.search-form .search-input.isResourceVisible {
+    width: 216px;
 }
 </style>
