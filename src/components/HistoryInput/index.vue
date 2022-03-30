@@ -1,29 +1,32 @@
 <template>
   <div class="history-input" :class="{ 'is-focus': isFocus }">
-    <div @click="delCookie">删除</div>
-    <!-- <input
+    <input
       class="search-input"
       @focus="inputFocusHandle(true)"
       :placeholder="inputBasicsData[isFocus].placeholder"
-      @blur="inputFocusHandle(false)"
+      @keyup.enter="inputFocusHandle(false)"
+      v-model="searchVal"
       type="text"
     />
-    <div class="seach-icon-container">
+    <div class="seach-icon-container" @click="saveSeachHistoryHandle">
       <img
         class="element-centre"
         :src="inputBasicsData[isFocus].searchIconUrl"
         alt="搜索图标"
       />
     </div>
-    <div class="typehead" v-show="searchHistotyList">
+    <div
+      class="typehead"
+      v-show="searchHistotyList.length > 0 && isFocus && !searchVal"
+    >
       <div class="title">
         <span>搜索历史</span>
-        <span class="clear"> 清空 </span>
+        <span class="clear" @click="clearCookies"> 清空 </span>
       </div>
       <div class="list">
-        <div>fasdf</div>
+        <div v-for="item in searchHistotyList" :key="item">{{ item }}</div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -44,18 +47,36 @@ export default {
           placeholder: "搜索文章/小册/标签/用户",
         },
       },
-      searchHistotyList: false,
+      searchHistotyList: this.$getLocalStorage("SEACH_HISTORY") || [],
+      searchVal: "",
     };
   },
   mounted() {
-    console.log(this.$setCookies("zzzz", 3));
+    // window.addEventListener('click',() => {
+    //   this.inputFocusHandle(false)
+    // },false)
   },
   methods: {
-    delCookie() {
+    clearCookies() {
       this.$clearCookies();
     },
     inputFocusHandle(Boole) {
       this.isFocus = Boole;
+      console.log(this.isFocus)
+      !this.isFocus && this.saveSeachHistoryHandle()
+    },
+    saveSeachHistoryHandle() {
+      const seachList = this.$getLocalStorage("SEACH_HISTORY") || [];
+      console.log(seachList)
+      if (seachList.length > 0) {
+        const index = seachList.indexOf(this.searchVal);
+        console.log(index);
+        index != -1 && seachList.splice(index, 1);
+      }
+      seachList.unshift(this.searchVal);
+      console.log(seachList);
+      this.searchHistotyList = seachList;
+      this.$setLocalStorage("SEACH_HISTORY", seachList);
     },
   },
 };
@@ -129,6 +150,9 @@ export default {
     color: #5e6369;
     div {
       padding: 0.5rem 1rem;
+      &:hover {
+        background: #eff2f5;
+      }
     }
   }
 }

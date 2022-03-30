@@ -1,5 +1,5 @@
 const setCookies = (key, value, t = 7) => {
-  console.log('setCookies')
+  console.log('setCookies', value)
   let oDate = new Date();
   oDate.setTime(oDate.getTime() + t * 24 * 60 * 60 * 1000);
   console.log('oDate', oDate)
@@ -42,4 +42,10 @@ const getTopDomain = () => {
   return `.${document.domain.replace(/.*\.([^.]+\.[^.]+)$/, '$1')}`
 }
 
-export { setCookies, getCookies, delCookie, clearCookies }
+const getLocalStorage = (key) => {
+  return JSON.parse(localStorage.getItem(key))
+}
+const setLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value))
+}
+export { setCookies, getCookies, delCookie, clearCookies, getLocalStorage, setLocalStorage }

@@ -6,7 +6,7 @@ import ElementUI from 'element-ui'
 import './assets/theme/index.css'
 import './assets/style/init.less'
 import './assets/style/common.less'
-import { setCookies, getCookies, delCookie, clearCookies } from './util/cookies.js'
+import { setCookies, getCookies, delCookie, clearCookies, getLocalStorage, setLocalStorage } from './util/cookies.js'
 
 Vue.config.productionTip = false
 
@@ -15,6 +15,9 @@ Vue.prototype.$setCookies = setCookies
 Vue.prototype.$getCookies = getCookies
 Vue.prototype.$delCookie = delCookie
 Vue.prototype.$clearCookies = clearCookies
+Vue.prototype.$getLocalStorage = getLocalStorage
+Vue.prototype.$setLocalStorage = setLocalStorage
+
 
 
 
