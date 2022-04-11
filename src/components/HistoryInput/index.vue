@@ -1,12 +1,14 @@
 <template>
   <div class="history-input" :class="{ 'is-focus': isFocus }">
     <input
-      class="search-input"
-      @focus="inputFocusHandle(true)"
-      :placeholder="inputBasicsData[isFocus].placeholder"
-      @keyup.enter="inputFocusHandle(false)"
+      ref="searchInput"
       v-model="searchVal"
       type="text"
+      class="search-input"
+      :placeholder="inputBasicsData[isFocus].placeholder"
+      @click.stop
+      @focus="inputFocusHandle(true)"
+      @keyup.enter="inputFocusHandle(false)"
     />
     <div class="seach-icon-container" @click="saveSeachHistoryHandle">
       <img
@@ -21,7 +23,7 @@
     >
       <div class="title">
         <span>搜索历史</span>
-        <span class="clear" @click="clearCookies"> 清空 </span>
+        <span class="clear" @click="clearSeachHistory"> 清空 </span>
       </div>
       <div class="list">
         <div v-for="item in searchHistotyList" :key="item">{{ item }}</div>
@@ -52,22 +54,31 @@ export default {
     };
   },
   mounted() {
-    // window.addEventListener('click',() => {
-    //   this.inputFocusHandle(false)
-    // },false)
+    window.addEventListener(
+      "click",
+      () => {
+        this.isFocus = false;
+        this.$refs.searchInput.blur();
+      },
+      false
+    );
   },
   methods: {
-    clearCookies() {
-      this.$clearCookies();
+    clearSeachHistory() {
+      this.searchHistotyList = [];
+      this.$clearStorage();
     },
     inputFocusHandle(Boole) {
+      console.log(this.$refs.searchInput);
       this.isFocus = Boole;
-      console.log(this.isFocus)
-      !this.isFocus && this.saveSeachHistoryHandle()
+      if (!this.isFocus) {
+        this.saveSeachHistoryHandle();
+        this.$refs.searchInput.blur();
+      }
     },
     saveSeachHistoryHandle() {
       const seachList = this.$getLocalStorage("SEACH_HISTORY") || [];
-      console.log(seachList)
+      console.log(seachList);
       if (seachList.length > 0) {
         const index = seachList.indexOf(this.searchVal);
         console.log(index);

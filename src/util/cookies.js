@@ -48,4 +48,7 @@ const getLocalStorage = (key) => {
 const setLocalStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value))
 }
-export { setCookies, getCookies, delCookie, clearCookies, getLocalStorage, setLocalStorage }
+const clearStorage = (key) => {
+  localStorage.removeItem(key)
+}
+export { setCookies, getCookies, delCookie, clearCookies, getLocalStorage, setLocalStorage, clearStorage }

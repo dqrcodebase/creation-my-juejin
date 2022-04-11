@@ -1,19 +1,25 @@
 <template>
-  <div class='default-layout'>
+  <div class="default-layout">
     <main-header />
+    <nav-list
+      :navList="[
+        { href: 'fdasf', name: 'dlasflkds' },
+        { href: 'dfasf', name: 'fasdf' },
+      ]"
+    />
     <view-nav />
     <slot></slot>
   </div>
 </template>
 
 <script>
-import MainHeader from 'components/MainHeader/index.vue';
-import viewNav from 'components/ViewNav/index.vue';
+import MainHeader from "components/MainHeader/index.vue";
+import ViewNav from "components/ViewNav/index.vue";
+import NavList from "components/NavList/index.vue";
 
 export default {
-  components: { MainHeader, viewNav },
+  components: { MainHeader, ViewNav, NavList },
   created() {
-    console.log(1111);
   },
 };
 </script>
