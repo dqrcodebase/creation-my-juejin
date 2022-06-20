@@ -1,8 +1,6 @@
 <template>
-  <div class='Pins'>
-    <header-nav-layout>
-      Pins
-    </header-nav-layout>
+  <div class="Pins">
+    <header-nav-layout> header-in-pins </header-nav-layout>
   </div>
 </template>
 
@@ -15,7 +13,7 @@ export default {
     HeaderNavLayout,
   },
   data() {
-    return {}
+    return {};
   },
 };
 </script>
