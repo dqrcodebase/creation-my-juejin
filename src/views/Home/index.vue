@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <header-nav-layout> header-nav-in-home </header-nav-layout>
+    <header-nav-layout> header-nav-in-home-change </header-nav-layout>
   </div>
 </template>
 
