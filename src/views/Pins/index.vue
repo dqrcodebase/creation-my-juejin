@@ -1,6 +1,6 @@
 <template>
   <div class="Pins">
-    <header-nav-layout> header-in-pins </header-nav-layout>
+    <header-nav-layout> header-nav-in-pins </header-nav-layout>
   </div>
 </template>
 

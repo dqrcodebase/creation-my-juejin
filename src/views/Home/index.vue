@@ -1,16 +1,14 @@
 <template>
-  <div class='home'>
-    <header-nav-layout>
-      home
-    </header-nav-layout>
+  <div class="home">
+    <header-nav-layout> header-nav-in-home </header-nav-layout>
   </div>
 </template>
 
 <script>
-import HeaderNavLayout from "layout/HeaderNavLayout.vue";
+import HeaderNavLayout from 'layout/HeaderNavLayout.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     HeaderNavLayout,
   },
